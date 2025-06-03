@@ -1,0 +1,25 @@
+* installing *source* package ‘MSCA’ ...
+** this is package ‘MSCA’ version ‘1.1.1’
+** using staged installation
+** libs
+using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+g++ -std=gnu++17 -I"/usr/share/R/include" -DNDEBUG -U__TBB_parallel_for -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/Rcpp/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppArmadillo/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppParallel/include'     -fpic  -g -O2 -ffile-prefix-map=/build/r-base-rgGXCp/r-base-4.5.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2   -c RcppExports.cpp -o RcppExports.o
+g++ -std=gnu++17 -I"/usr/share/R/include" -DNDEBUG -U__TBB_parallel_for -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/Rcpp/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppArmadillo/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppParallel/include'     -fpic  -g -O2 -ffile-prefix-map=/build/r-base-rgGXCp/r-base-4.5.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2   -c block_jack.cpp -o block_jack.o
+g++ -std=gnu++17 -I"/usr/share/R/include" -DNDEBUG -U__TBB_parallel_for -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/Rcpp/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppArmadillo/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppParallel/include'     -fpic  -g -O2 -ffile-prefix-map=/build/r-base-rgGXCp/r-base-4.5.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2   -c make_state_matrix.cpp -o make_state_matrix.o
+g++ -std=gnu++17 -I"/usr/share/R/include" -DNDEBUG -U__TBB_parallel_for -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/Rcpp/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppArmadillo/include' -I'/home/marc/R/x86_64-pc-linux-gnu-library/4.5/RcppParallel/include'     -fpic  -g -O2 -ffile-prefix-map=/build/r-base-rgGXCp/r-base-4.5.0=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2   -c upper_jack.cpp -o upper_jack.o
+g++ -std=gnu++17 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -o MSCA.so RcppExports.o block_jack.o make_state_matrix.o upper_jack.o -L/usr/lib/R/lib -lR
+installing to /home/marc/Documents/PACKAGES/MSCA/MSCA.Rcheck/00LOCK-MSCA/00new/MSCA/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (MSCA)

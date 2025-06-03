@@ -1,0 +1,152 @@
+Hmm ... looks like a package
+Converting parsed Rd's to LaTeX 
+Creating pdf output from LaTeX ...
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-29>
+(./Rd2.tex
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/usr/share/R/share/texmf/tex/latex/Rd.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/url/url.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/mathrsfs.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/home/marc/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/home/marc/.TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+No file Rd2.aux.
+(/home/marc/.TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+No file Rd2.toc.
+
+[1{/home/marc/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]
+Overfull \hbox (46.38731pt too wide) in paragraph at lines 95--96
+[]\T1/ptm/m/n/10 A state ma-trix of cen-sored time-to-event in-di-ca-tors as com-puted by the []\T1/zi4/m/n/10 make_state_matrix
+
+[2]
+[3]
+[4]
+[5]
+Overfull \hbox (3.34706pt too wide) in paragraph at lines 276--278
+[]\T1/ptm/m/n/10 Computes de-scrip-tive statis-tics for se-quences, in-clud-ing se-quence fre-quency for any se-quence length,
+
+Overfull \hbox (48.58752pt too wide) in paragraph at lines 293--294
+[]\T1/ptm/m/n/10 A list of data frames con-tain-ing se-quences, typ-i-cally the out-put of [][][]\T1/zi4/m/n/10 get_cluster_sequences[][][][]\T1/ptm/m/n/10 . 
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+[6]
+No file Rd2.ind.
+
+[7] (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.cspade} has been referenced but does not exist, replaced by a fixed one
+
+</home/marc/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (7 pages, 97450 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2025] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (16 entries accepted, 0 rejected).
+Sorting entries....done (63 comparisons).
+Generating output file Rd2.ind....done (43 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-29>
+(./Rd2.tex
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/usr/share/R/share/texmf/tex/latex/Rd.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/url/url.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/mathrsfs.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/home/marc/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/home/marc/.TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.aux) (/home/marc/.TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.out) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.out) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/ursfs.fd) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.toc
+[1{/home/marc/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}])
+[2]
+Overfull \hbox (46.38731pt too wide) in paragraph at lines 95--96
+[]\T1/ptm/m/n/10 A state ma-trix of cen-sored time-to-event in-di-ca-tors as com-puted by the []\T1/zi4/m/n/10 make_state_matrix
+
+[3]
+[4]
+[5]
+Overfull \hbox (3.34706pt too wide) in paragraph at lines 276--278
+[]\T1/ptm/m/n/10 Computes de-scrip-tive statis-tics for se-quences, in-clud-ing se-quence fre-quency for any se-quence length,
+
+Overfull \hbox (48.58752pt too wide) in paragraph at lines 293--294
+[]\T1/ptm/m/n/10 A list of data frames con-tain-ing se-quences, typ-i-cally the out-put of [][][]\T1/zi4/m/n/10 get_cluster_sequences[][][][]\T1/ptm/m/n/10 . 
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+[6] (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.ind
+[7]
+
+[8]) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.cspade} has been referenced but does not exist, replaced by a fixed one
+
+</home/marc/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (8 pages, 107986 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2025] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (16 entries accepted, 0 rejected).
+Sorting entries....done (63 comparisons).
+Generating output file Rd2.ind....done (43 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-29>
+(./Rd2.tex
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/usr/share/R/share/texmf/tex/latex/Rd.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/url/url.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/mathrsfs.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/home/marc/.TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/home/marc/.TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/home/marc/.TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/home/marc/.TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/home/marc/.TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty)) (/home/marc/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/home/marc/.TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty) (/home/marc/.TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/home/marc/.TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.aux) (/home/marc/.TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.out) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.out) (/home/marc/.TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/home/marc/.TinyTeX/texmf-dist/tex/latex/jknapltx/ursfs.fd) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.toc
+[1{/home/marc/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/home/marc/.TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}])
+[2]
+Overfull \hbox (46.38731pt too wide) in paragraph at lines 95--96
+[]\T1/ptm/m/n/10 A state ma-trix of cen-sored time-to-event in-di-ca-tors as com-puted by the []\T1/zi4/m/n/10 make_state_matrix
+
+[3]
+[4]
+[5]
+Overfull \hbox (3.34706pt too wide) in paragraph at lines 276--278
+[]\T1/ptm/m/n/10 Computes de-scrip-tive statis-tics for se-quences, in-clud-ing se-quence fre-quency for any se-quence length,
+
+Overfull \hbox (48.58752pt too wide) in paragraph at lines 293--294
+[]\T1/ptm/m/n/10 A list of data frames con-tain-ing se-quences, typ-i-cally the out-put of [][][]\T1/zi4/m/n/10 get_cluster_sequences[][][][]\T1/ptm/m/n/10 . 
+(/home/marc/.TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+[6] (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.ind
+[7]
+
+[8]) (/tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1/Rd2.aux) )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.cspade} has been referenced but does not exist, replaced by a fixed one
+
+</home/marc/.TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/marc/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (8 pages, 108706 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘MSCA-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /tmp/RtmpqMMZKc/Rd2pdf9f3978f04ca1'

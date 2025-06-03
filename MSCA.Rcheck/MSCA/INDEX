@@ -1,0 +1,8 @@
+EHR                     Description of the EHR dataset
+fast_clara_jaccard      Fast CLARA-like clustering using Jaccard
+                        dissimilarity
+fast_jaccard_dist       Compute upper triangle Jaccard distance
+get_cluster_sequences   Extract sequences of length k within clusters
+make_state_matrices     Construct state matrices from longitudinal EHR
+                        Data
+sequence_stats          Compute sequence statistics
