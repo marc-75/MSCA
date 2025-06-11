@@ -18,7 +18,7 @@ RcppParallel::setThreadOptions(numThreads = 1)
 
 ## Background
 
-This library implements basic tools to conduct unsupervised learning or clustering of instances - such as patients for instance - are described by multiple censored time-to-event endpoints. It has been developed to be adapted to situations where events are not associated with a change in state such as in the field of the social sciences where events such as \textit{wedding} or \textit{first job} mark a change in status from one state to another, but have an additive impact, such as multiple long-term conditions on patients. This short vignette (on progress) will describe shortly how to conduct a full analysis using a toy dataset.
+This library implements basic tools to conduct unsupervised learning or clustering of instances - such as patients - that are described by multiple censored time-to-event endpoints. It has been developed to be adapted to situations where events are not associated with a radical change in state like in the field of the social sciences where events such as \textit{wedding} or \textit{first job} mark a change in an individual status from one state to another, but have an additive impact, such as multiple long-term conditions on patients. This vignette (on progress) will shrtly describe how to conduct a clustring analysis using a toy dataset.
 
 Unsupervised analyses workflow are conducted through the following steps when based on distances / dissimilarity between analysed instances:
 
