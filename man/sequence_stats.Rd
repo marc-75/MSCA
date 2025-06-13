@@ -5,20 +5,23 @@
 \title{Compute sequence statistics}
 \usage{
 sequence_stats(
-  seq_list,
+  seq_data,
   min_seq_freq = 0.01,
   min_conditional_prob = 0,
-  min_relative_risk = 0
+  min_relative_risk = 0,
+  forward = TRUE
 )
 }
 \arguments{
-\item{seq_list}{A list of data frames containing sequences, typically the output of \code{\link{get_cluster_sequences}}.}
+\item{seq_data}{A list of data frames containing sequences, must be the output of \code{\link{get_cluster_sequences}}.}
 
 \item{min_seq_freq}{Numeric threshold (default = 0.01). Filters out sequences with relative frequency below this value.}
 
 \item{min_conditional_prob}{Numeric threshold (default = 0). Applies only for pairwise sequences (\code{k = 2}).}
 
 \item{min_relative_risk}{Numeric threshold (default = 0). Applies only for pairwise sequences (\code{k = 2}).}
+
+\item{forward}{If \code{TRUE} only sequences with median age at onset of \code{from} is lower than median age at onset of \code{to} are kept}
 }
 \value{
 A list of data frames, each containing the sequence statistics for one cluster.

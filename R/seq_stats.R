@@ -3,10 +3,11 @@
 #' Computes descriptive statistics for sequences, including sequence frequency for any sequence length,
 #' and conditional probability and relative risk for sequences of length 2 (pairwise transitions).
 #'
-#' @param seq_list A list of data frames containing sequences, typically the output of \code{\link{get_cluster_sequences}}.
+#' @param seq_data A list of data frames containing sequences, must be the output of \code{\link{get_cluster_sequences}}.
 #' @param min_seq_freq Numeric threshold (default = 0.01). Filters out sequences with relative frequency below this value.
 #' @param min_conditional_prob Numeric threshold (default = 0). Applies only for pairwise sequences (\code{k = 2}).
 #' @param min_relative_risk Numeric threshold (default = 0). Applies only for pairwise sequences (\code{k = 2}).
+#' @param forward If \code{TRUE} only sequences with median age at onset of \code{from} is lower than median age at onset of \code{to} are kept
 #'
 #' @details For \code{k = 2}, the function computes:
 #' \itemize{
@@ -22,14 +23,31 @@
 #' @importFrom dplyr count mutate group_by ungroup arrange rename summarise across left_join filter select
 #' @importFrom dplyr everything
 #' @importFrom dplyr desc
-
 #' @export
-sequence_stats <- function(seq_list,
-                           min_seq_freq = 0.01,
-                           min_conditional_prob = 0,
-                           min_relative_risk = 0) {
-  lapply(seq_list, function(df) {
+sequence_stats <- function( seq_data ,
+                            min_seq_freq = 0.01,
+                            min_conditional_prob = 0,
+                            min_relative_risk = 0,
+                            forward = TRUE){
+
+  call_info <- attr(seq_data, "call")
+  cl_col <- eval(call_info[["cl_col"]])
+  reg_col <- eval(call_info[["event_col"]])
+  seq_list <- seq_data$sequences
+  ns <- names(seq_list)
+  dt_aos <- seq_data$dt_aos
+  nbc <- seq_data$n_by_cluster
+
+  lapply( seq_along(seq_list), function(i) {
+
+    df <- seq_list[[i]]
+    ns2 <- ns[i]
+    dt_aos2 <- dt_aos %>%
+      filter(.data[[cl_col]] == ns2  ) %>% select(-all_of(c("n", cl_col)))   # <- THIS is correct
+    nbc2 <- nbc[i]
+
     if (is.null(df) || !is.data.frame(df) || nrow(df) == 0) return(NULL)
+
 
     k <- ncol(df)
     colnames(df) <- paste0("V", seq_len(k))
@@ -39,7 +57,7 @@ sequence_stats <- function(seq_list,
 
     total <- sum(tab$seq_count)
     tab <- tab %>%
-      mutate(seq_freq = seq_count / total)
+      mutate(seq_freq = seq_count / nbc2 )
 
     if (k == 2) {
       tab <- tab %>%
@@ -60,9 +78,15 @@ sequence_stats <- function(seq_list,
         filter(seq_freq >= min_seq_freq,
                conditional_prob >= min_conditional_prob,
                relative_risk >= min_relative_risk)
+      if (forward) {
+        tab <- tab %>%
+          left_join(dt_aos2, by = c('from' = reg_col)) %>%
+          left_join(dt_aos2, by = c('to' = reg_col), suffix = c('.from', '.to')) %>%
+          filter(med.from < med.to)
+      }
     } else {
       tab <- tab %>%
-        filter(seq_freq >= min_seq_freq)
+        dplyr::filter(seq_freq >= min_seq_freq)
     }
 
     tab %>%

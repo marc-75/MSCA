@@ -117,7 +117,7 @@ dt_seq <- get_cluster_sequences(
 
 # Get basic stats by cluster
 sequence_stats(
-  seq_list = dt_seq$sequences ,
+  seq_data = dt_seq ,
   min_seq_freq = 0.03,
   min_conditional_prob = 0,
   min_relative_risk = 0
