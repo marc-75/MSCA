@@ -26,7 +26,7 @@
 #'   \item{clustering}{An integer vector of cluster assignments for each patient.}
 #'   \item{medoids}{Indices of medoids associated witht the lower cost.}
 #'   \item{sample}{Indices of the sampled columns used in clustering.}
-#'   \item{cost}{Total cost (sum of dissimilarities to assigned medoids).}
+#'   \item{cost}{Total cost (median of dissimilarities to assigned medoids).}
 #' }
 #' @note
 #' To improve efficiency, the function uses either the \code{fastpam} or \code{fastclarans}
@@ -47,7 +47,7 @@ fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
                                seed = 123 ,
                                cost_comp_ratio = 1 ,
                                part_method = 'pam' ,
-                               maxneighbor = 0.75 ,
+                               maxneighbor = 0.075 ,
                                numlocal = 3 ) {
 ### match args
   tryCatch({
@@ -66,30 +66,34 @@ fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
     cost_comp_ratio <- 1
   }
 ###
-  if (  samplesize / k <  2 ) {
-    stop("Ratio samplesize / k <  2. Consider increasing  the sample sise or decreasing k.")
-    cost_comp_ratio <- 1
-  }
-###
-  if (inherits(data, "dist"))
+    if (inherits(data, "dist"))
     data <- as.matrix( data )
   set.seed( seed )
   n <- ncol( data )
   if (is.null(samplesize)) samplesize <- min(40 + 3 * k, n)
+  ###
+  if (  samplesize / k <  2 ) {
+    stop("Ratio samplesize / k <  2. Consider increasing  the sample sise or decreasing k.")
+  }
+  ###
 
+  nc <- ncol(data)
+  cn <- colnames(data)
   costs <- vector(length = samples)
   best_cost <- Inf
   best_result <- NULL
-s_dist <- list()
+  s_dist <- list()
+  s <- 1
   for (s in seq_len(samples)) {
     message("Sample ", s)
 
     # Step 1: Sample indices
-    idx <- sample(seq_len(n), samplesize)
-    sample_data <- data[, idx, drop = FALSE]
+    cns <- sample( cn , samplesize)
+    sample_data <- data[, cns , drop = FALSE]
 
     # Step 2: Compute Jaccard distance on sample (upper triangle)
     d_sample <- jaccard_index_rcpp_upper(sample_data)
+    dimnames( d_sample ) <- list( cns , cns )
     d_sample[is.na(d_sample)] <- 1
     diag(d_sample) <- 0
 
@@ -102,65 +106,71 @@ s_dist <- list()
                                           numlocal = numlocal,
                                           maxneighbor = maxneighbor )
     }
-    cluster_assign_sample <- part_res@assignment
-    medoids_local_idx <- part_res@medoids
-    medoids_global_idx <- idx[medoids_local_idx]
+
+    # Assignment
+    medoids_global <- cns[ part_res@medoids ]
 
     # Step 4: Extract medoid data
-    medoid_data <- data[, medoids_global_idx, drop = FALSE]
+    medoid_data <- data[ , medoids_global , drop = FALSE]
 
     # Step 5: Full dissimilarity: medoids × full data
-    nc <- ncol(data)
-    idx <- setdiff( seq_len( nc ) ,  medoids_global_idx )
+    #idx <- setdiff( seq_len( nc ) ,  medoids_global_idx )
     nc2 <- round( nc * cost_comp_ratio )
     if( cost_comp_ratio != 1){
-      s2 <- sample( idx , size =  nc2 )
+      idx2 <- sample( cn , size =  nc2 )
     } else {
-      s2 <- seq_len(nc)
+      idx2 <- cn
     }
-    d_full <- jaccard_index_rcpp_parallel( medoid_data , data[,s2] )
+
+    # Here the computation in done on the full dataset (or fractionned)
+    d_full <- jaccard_index_rcpp_parallel( medoid_data , data[ , idx2 ] )
+    dimnames(d_full) <- list( medoids_global , idx2 )
     diss_to_medoids <- t(d_full)
     diss_to_medoids[is.na(diss_to_medoids)] <- 1
 
     # Step 6: Assign each column to closest medoid
-    cluster_assign <- max.col(-diss_to_medoids, ties.method = "first")
+    cluster_assign_idx <- apply( diss_to_medoids , 1 , which.min )
 
     # Step 7: Compute cost
-    cost_vector <- diss_to_medoids[cbind(seq_len(nc2), cluster_assign)]
-    total_cost <- sum(cost_vector)
-    costs[s] <- sum(cost_vector)
+    cost_vector <- apply( diss_to_medoids , 1 , min )
+    total_cost <- median(cost_vector)
+    costs[s] <- median(cost_vector)
 
     # Step 8: Update best result if needed
     if (total_cost < best_cost) {
       best_cost <- total_cost
       best_result <- list(
-        sample = idx,
-        medoids = medoids_global_idx,
-        clustering = cluster_assign,
+        medoids = medoids_global,
+        clustering = cluster_assign_idx,
         cost = total_cost
       )
     }
   }
-  # If frac > 1 need to compute the full cost
+  # End of loop
+  # If cost_comp_ratio < 1 need to compute the full cost and assignment
   # Else nothing
-  if( cost_comp_ratio > 1 ){
-    medoids_global_idx <- best_result$medoids
-    # Full dissimilarity for final assignment
-    medoid_data <- data[, medoids_global_idx, drop = FALSE]
-    d_full <- jaccard_index_rcpp_parallel(medoid_data, data)
-    # Assign the highest value if NA
-    d_full[is.na(d_full)] <- 1
 
-    # Assign all items (columns) to nearest medoid
+  if( cost_comp_ratio < 1 ){
+    medoids_global <- best_result$medoids
+    # Full dissimilarity for final assignment
+    medoid_data <- data[, medoids_global, drop = FALSE]
+    d_full <- jaccard_index_rcpp_parallel(medoid_data, data)
+    dimnames(d_full) <- list( medoids_global , cn )
     diss_to_medoids <- t(d_full)
-    cluster_assign <- max.col(-diss_to_medoids, ties.method = "first")
-    cost_vector <- diss_to_medoids[cbind(seq_len(ncol(data)), cluster_assign)]
-    total_cost <- sum(cost_vector)
+    diss_to_medoids[is.na(diss_to_medoids)] <- 1
+
+    # Step 6: Assign each column to closest medoid
+    cluster_assign_idx <- apply( diss_to_medoids , 1 , which.min )
+
+    # Step 7: Compute cost
+    cost_vector <- apply( diss_to_medoids , 1 , min )
+    total_cost <- median( cost_vector )
+    ###
 
     # Update best_result
     best_result <- list(
-      medoids = medoids_global_idx,
-      clustering = cluster_assign,
+      medoids = medoids_global,
+      clustering = cluster_assign_idx,
       cost = total_cost
     )
   }
