@@ -2,11 +2,11 @@
 #'
 #' Implements a CLARA (Clustering Large Applications) strategy using Jaccard dissimilarity
 #' computed on individual patients state matrices. The algorithm repeatedly samples subsets of the data,
-#' performs PAM clustering on each subset, and selects the medoids that minimise the total dissimilarity across
-#' the full dataset. Final assignments are made by mapping all data points to the nearest selected medoid.
+#' performs PAM or CLARANS partition on each subset, and selects the medoids that minimise the total dissimilarity across the full dataset. Final assignments are made by mapping all data points to the nearest selected medoid.
+#' Cost can also be computed on a fraction of the dataset to reduce computational cost (see details).
 #'
-#' This implementation adapts the original CLARA method described by Kaufman and Rousseeuw (1990)
-#' in "Finding Groups in Data: An Introduction to Cluster Analysis".
+#' @details This function adapts the original CLARA method described by Kaufman and Rousseeuw (1990)
+#' in "Finding Groups in Data: An Introduction to Cluster Analysis". In addition, it allows to replace the #' PAM partitioning method by the CLARANS procedure which is less costly.
 #'
 #' @references
 #' Kaufman, L. & Rousseeuw, P. J. (1990). *Finding Groups in Data: An Introduction to Cluster Analysis*. Wiley.
@@ -15,9 +15,12 @@
 #' @param k Number of returned clusters.
 #' @param samples Number of random samples drawn from the analysed population.
 #' @param samplesize Number of patients per sample (default: min(50 + 5k, ncol(data))).
+#' @param part_method Partition method used in the partition phase `pam` (default) or `clarans`
+#' @param maxneighbor If part_method = `clarans`, set the number of medoid swap (default 0,075 * samplesize).
+#' @param numlocal If part_method = `clarans`, set the number of medoid swap phases (default 3).
 #' @param seed Random seed for reproducibility (default: 123).
-#' @param frac Fraction of the population to use for cost computation (default: 1).
-#' @importFrom fastkmedoids fastpam
+#' @param cost_comp_ratio Proportion of data sampled to compute the clustering cost (default: 1).
+#' @importFrom fastkmedoids fastpam fastclarans
 #' @return A list with index of patients from the sample a, medoid indices, cluster assignment, and cost.
 #' \describe{
 #'   \item{clustering}{An integer vector of cluster assignments for each patient.}
@@ -25,15 +28,53 @@
 #'   \item{sample}{Indices of the sampled columns used in clustering.}
 #'   \item{cost}{Total cost (sum of dissimilarities to assigned medoids).}
 #' }
-#' @note To improve efficiency, the function used fastpam procedure from the fastkmedoids library and uses optimized Jaccard index computation.
-#' For simulation purpose, the \code{frac} parameter can be used to reduce time when computing the cost for each sample. The final cost is given using medoids associated with lower cost computed on fractionned data. A final analysis using the proper CLARA method should be conducted setting \code{frac} to 1.
+#' @note
+#' To improve efficiency, the function uses either the \code{fastpam} or \code{fastclarans}
+#' procedure from the \pkg{fastkmedoids} package along with an optimised Jaccard index computation.
+#'
+#' For testing purposes, the \code{cost_comp_ratio} parameter allows cost evaluation
+#' to be performed on a subsample of the dataset at each iteration. The final clustering cost
+#' is always computed on the full dataset using the medoids that achieved the lowest cost
+#' on the subsampled data.
+#'
+#' Use this parameter with caution: setting \code{cost_comp_ratio} < 1 introduces randomness
+#' into cost estimation during the iterative phase. For final analyses, it is recommended
+#' to set \code{cost_comp_ratio = 1} to ensure a deterministic cost evaluation, as implemented in the
+#' original CLARA method.
+
 #' @export
 fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
-                               seed = 123 , frac = 1  ) {
+                               seed = 123 ,
+                               cost_comp_ratio = 1 ,
+                               part_method = 'pam' ,
+                               maxneighbor = 0.75 ,
+                               numlocal = 3 ) {
+### match args
+  tryCatch({
+    part_method <- match.arg(part_method, choices = c("pam", "clarans"))
+  }, error = function(e) {
+    stop("Invalid 'part_method': must be 'pam' or 'clarans'.", call. = FALSE)
+  })
+###
+  if (cost_comp_ratio < 0.1) {
+    message("cost_comp_ratio set to 0.1 for more reliable cost estimation.")
+    cost_comp_ratio <- 0.1
+  }
+###
+  if (cost_comp_ratio > 1) {
+    message("cost_comp_ratio set to 1.")
+    cost_comp_ratio <- 1
+  }
+###
+  if (  samplesize / k <  2 ) {
+    stop("Ratio samplesize / k <  2. Consider increasing  the sample sise or decreasing k.")
+    cost_comp_ratio <- 1
+  }
+###
   if (inherits(data, "dist"))
-    data <- as.matrix(data)
-  set.seed(seed)
-  n <- ncol(data)
+    data <- as.matrix( data )
+  set.seed( seed )
+  n <- ncol( data )
   if (is.null(samplesize)) samplesize <- min(40 + 3 * k, n)
 
   costs <- vector(length = samples)
@@ -54,9 +95,15 @@ s_dist <- list()
 
 
     # Step 3: PAM clustering on sample
-    pam_res <- fastkmedoids::fastpam(rdist = as.dist(t(d_sample)), n = samplesize, k = k)
-    cluster_assign_sample <- pam_res@assignment
-    medoids_local_idx <- pam_res@medoids
+    if( part_method == 'pam' ){
+      part_res <- fastkmedoids::fastpam(rdist = as.dist(t(d_sample)), n = samplesize, k = k)
+    } else {
+    part_res <- fastkmedoids::fastclarans(as.dist(t(d_sample)) , n = samplesize, k = k ,
+                                          numlocal = numlocal,
+                                          maxneighbor = maxneighbor )
+    }
+    cluster_assign_sample <- part_res@assignment
+    medoids_local_idx <- part_res@medoids
     medoids_global_idx <- idx[medoids_local_idx]
 
     # Step 4: Extract medoid data
@@ -65,8 +112,8 @@ s_dist <- list()
     # Step 5: Full dissimilarity: medoids × full data
     nc <- ncol(data)
     idx <- setdiff( seq_len( nc ) ,  medoids_global_idx )
-    nc2 <- round(nc / frac)
-    if(frac != 1){
+    nc2 <- round( nc * cost_comp_ratio )
+    if( cost_comp_ratio != 1){
       s2 <- sample( idx , size =  nc2 )
     } else {
       s2 <- seq_len(nc)
@@ -96,7 +143,7 @@ s_dist <- list()
   }
   # If frac > 1 need to compute the full cost
   # Else nothing
-  if(frac > 1 ){
+  if( cost_comp_ratio > 1 ){
     medoids_global_idx <- best_result$medoids
     # Full dissimilarity for final assignment
     medoid_data <- data[, medoids_global_idx, drop = FALSE]
@@ -112,12 +159,11 @@ s_dist <- list()
 
     # Update best_result
     best_result <- list(
-      sample = idx,
       medoids = medoids_global_idx,
       clustering = cluster_assign,
       cost = total_cost
     )
   }
-
-  return(best_result)
+gc()
+return(best_result)
 }
