@@ -1,1 +1,1 @@
-![Hex sticker](man/figures/msca_hex.png)
+<img src="man/figures/msca_hex.png" width="150"/>

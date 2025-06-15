@@ -12,7 +12,7 @@ fast_clara_jaccard(
   seed = 123,
   cost_comp_ratio = 1,
   part_method = "pam",
-  maxneighbor = 0.75,
+  maxneighbor = 0.075,
   numlocal = 3
 )
 }
@@ -41,7 +41,7 @@ A list with index of patients from the sample a, medoid indices, cluster assignm
 \item{clustering}{An integer vector of cluster assignments for each patient.}
 \item{medoids}{Indices of medoids associated witht the lower cost.}
 \item{sample}{Indices of the sampled columns used in clustering.}
-\item{cost}{Total cost (sum of dissimilarities to assigned medoids).}
+\item{cost}{Total cost (median of dissimilarities to assigned medoids).}
 }
 }
 \description{
