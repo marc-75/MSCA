@@ -9,6 +9,8 @@ get_cluster_sequences(
   cl_col = "cl",
   id_col = "link_id",
   event_col = "reg",
+  aos_col = "aos",
+  cens = "cens",
   k = 2
 )
 }
@@ -20,6 +22,10 @@ get_cluster_sequences(
 \item{id_col}{Name of the column identifying individual trajectories (e.g. patient ID).}
 
 \item{event_col}{Name of the column containing ordered events (e.g. diagnoses, prescriptions).}
+
+\item{aos_col}{Name of the column containing age at onset.}
+
+\item{cens}{Code indicating censoring.}
 
 \item{k}{Integer specifying the sequence length (recomended 2).}
 }

@@ -7,6 +7,8 @@
 #' @param cl_col Name of the column containing cluster labels.
 #' @param id_col Name of the column identifying individual trajectories (e.g. patient ID).
 #' @param event_col Name of the column containing ordered events (e.g. diagnoses, prescriptions).
+#' @param aos_col Name of the column containing age at onset.
+#' @param cens Code indicating censoring.
 #' @param k Integer specifying the sequence length (recomended 2).
 #'
 #' @return A named list of data frames, each containing sequences of length \code{k} observed in a given cluster.
@@ -16,13 +18,34 @@
 #' mining using the SPADE algorithm.
 #' @importFrom data.table setDT as.data.table :=
 #' @importFrom utils combn
+#' @importFrom rlang enquo as_name
+#' @importFrom stats median
+#' @importFrom dplyr distinct all_of
+#' @importFrom dplyr filter mutate group_by summarise count left_join select arrange
 #' @keywords Censored state matrix
 #' @concept Sequence analysis
 #' @export
-get_cluster_sequences <- function(dt, cl_col = "cl", id_col = "link_id", event_col = "reg", k = 2) {
+get_cluster_sequences <- function(dt, cl_col = "cl", id_col = "link_id", event_col = "reg",
+                                  aos_col =  "aos" ,
+                                  cens = 'cens',
+                                  k = 2) {
+  # Set as a data.table for faster computation
   setDT(dt)
-  cl_values <- unique(dt[[cl_col]])
+  # Suppress the censoring as an event
+  dt <- dt %>%
+    filter( ! .data[[event_col]] == cens )
+  # Compute the median age at onset
+  dt_aos <- dt %>%
+    group_by( .data[[cl_col]] , .data[[event_col]] ) %>%
+    summarise(med = median( .data[[aos_col]] ), .groups = "drop") %>%
+    left_join(
+      dt %>%
+        distinct( .data[[id_col]] , .keep_all = TRUE) %>%
+        count( .data[[cl_col]] , name = "n"),
+      by = cl_col
+    )
 
+  cl_values <- unique(dt[[cl_col]])
   seq_list <- vector("list", length(cl_values))
   nseq <- integer(length(cl_values))
   names(seq_list) <- cl_values
@@ -39,5 +62,8 @@ get_cluster_sequences <- function(dt, cl_col = "cl", id_col = "link_id", event_c
     nseq[i] <- length(uids)
   }
 
-  list(sequences = seq_list, n_by_cluster = nseq)
+
+ ret <- list(sequences = seq_list, n_by_cluster = nseq , dt_aos = dt_aos )
+ attr(ret, "call") <- match.call()
+ return(ret)
 }
