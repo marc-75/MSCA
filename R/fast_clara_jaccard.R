@@ -1,4 +1,4 @@
-#' Fast CLARA-like clustering using Jaccard dissimilarity
+#' Fast CLARA-like clustering using Jaccard dissimilarity (beta version - under assessment)
 #'
 #' Implements a CLARA (Clustering Large Applications) strategy using Jaccard dissimilarity
 #' computed on individual patients state matrices. The algorithm repeatedly samples subsets of the data,
@@ -93,21 +93,23 @@ fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
 
     # Step 2: Compute Jaccard distance on sample (upper triangle)
     d_sample <- jaccard_index_rcpp_upper(sample_data)
+    d_sample <- as.matrix(Matrix::forceSymmetric(t(d_sample), uplo = "L"))
     dimnames( d_sample ) <- list( cns , cns )
     d_sample[is.na(d_sample)] <- 1
     diag(d_sample) <- 0
 
 
+
     # Step 3: PAM clustering on sample
     if( part_method == 'pam' ){
-      part_res <- fastkmedoids::fastpam(rdist = as.dist(t(d_sample)), n = samplesize, k = k)
+      part_res <- fastkmedoids::fastpam(rdist = as.dist(d_sample), n = samplesize, k = k)
     } else {
-    part_res <- fastkmedoids::fastclarans(as.dist(t(d_sample)) , n = samplesize, k = k ,
+    part_res <- fastkmedoids::fastclarans(as.dist(d_sample) , n = samplesize, k = k ,
                                           numlocal = numlocal,
                                           maxneighbor = maxneighbor )
     }
 
-    # Assignment
+    # Get medoids
     medoids_global <- cns[ part_res@medoids ]
 
     # Step 4: Extract medoid data
@@ -174,6 +176,11 @@ fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
       cost = total_cost
     )
   }
+
+
+  call_args <- as.list(match.call(definition = sys.function(), call = sys.call(), expand.dots = TRUE))
+  call_args <- modifyList(as.list(formals(sys.function())), call_args)
+  best_result$call = unlist(call_args)
 gc()
 return(best_result)
 }
