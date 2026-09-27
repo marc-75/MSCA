@@ -89,7 +89,7 @@ sequence_stats <- function( seq_data ,
         dplyr::filter(seq_freq >= min_seq_freq)
     }
 
-    tab %>%
+     tab %>%
       arrange(desc(seq_freq))
   })
 }

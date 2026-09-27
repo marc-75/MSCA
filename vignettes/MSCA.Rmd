@@ -18,7 +18,7 @@ RcppParallel::setThreadOptions(numThreads = 1)
 
 ## Background
 
-This library implements basic tools to conduct unsupervised learning or clustering of instances - such as patients - that are described by multiple censored time-to-event endpoints. It has been developed to be adapted to situations where events are not associated with a radical change in state like in the field of the social sciences where events such as \textit{wedding} or \textit{first job} mark a change in an individual status from one state to another, but have an additive impact, such as multiple long-term conditions on patients. This vignette (on progress) will shrtly describe how to conduct a clustring analysis using a toy dataset.
+This library implements basic tools to conduct unsupervised learning or clustering of instances - such as patients - that are described by multiple censored time-to-event endpoints. It has been developed to be adapted to situations where events are not associated with a radical change in state like in the field of the social sciences where events such as wedding or first job mark a change in an individual status from one state to another, but have an additive impact, such as multiple long-term conditions on patients. This vignette (on progress) briefly describes the basic steps needed to conduct a clustering analysis using a toy dataset.
 
 Unsupervised analyses workflow are conducted through the following steps when based on distances / dissimilarity between analysed instances:
 
@@ -29,7 +29,7 @@ Unsupervised analyses workflow are conducted through the following steps when ba
 
 The main purpose of the proposed tools is to be able to compute the Jaccard distance between patients on multiple censored time-to-event indicators. As a results patients having similar trajectories are expected to get clustered together, whereas patients with divergent health trajectories are likely to be assigned to different clusters.  
 
-In the fist section we will show how to construct censored state matrices from time stamped records (electonic health records) using simulated electronic health records. In section 2, we will show how to compute patients dissimilarity and derive a simple typology. In section 3 will will illustrate the use of the CLARA procedure in this setting when having to analyse larger set of patient (> 15000).
+In the fist section we will show how to construct censored state matrices from time stamped records (electronic health records) using simulated electronic health records. In section 2, we will show how to compute patients dissimilarity and derive a simple typology. In section 3 will will illustrate the use of the CLARA procedure in this setting when having to analyse larger set of patient (> 15000).
 
 ## From electronic health records to state matrices
 
@@ -54,7 +54,7 @@ EHR %>%
 
 ```
 
-The function \sript( make_state_matrix ) is needed to obtain the individual patients state matrices:
+The function `make_state_matrices()` is needed to obtain the individual patients state matrices:
 
 
 ```{r}
@@ -72,7 +72,7 @@ dim( s_mat )
 
 ## Compute the Jaccard distance between patients
 
-The use of \script{fast_jaccard_dist} allow to speed the computation of Jaccard distance between patients.
+The use of `fast_jaccard_dist()` allow to speed the computation of Jaccard distance between patients.
 
 ```{r}
 library( cluster )

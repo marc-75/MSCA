@@ -2,7 +2,7 @@
 % Please edit documentation in R/fast_clara_jaccard.R
 \name{fast_clara_jaccard}
 \alias{fast_clara_jaccard}
-\title{Fast CLARA-like clustering using Jaccard dissimilarity}
+\title{Fast CLARA-like clustering using Jaccard dissimilarity - beta version - under assessment}
 \usage{
 fast_clara_jaccard(
   data,

@@ -1,4 +1,4 @@
-#' Fast CLARA-like clustering using Jaccard dissimilarity (beta version - under assessment)
+#' Fast CLARA-like clustering using Jaccard dissimilarity - beta version - under assessment
 #'
 #' Implements a CLARA (Clustering Large Applications) strategy using Jaccard dissimilarity
 #' computed on individual patients state matrices. The algorithm repeatedly samples subsets of the data,
@@ -21,6 +21,7 @@
 #' @param seed Random seed for reproducibility (default: 123).
 #' @param cost_comp_ratio Proportion of data sampled to compute the clustering cost (default: 1).
 #' @importFrom fastkmedoids fastpam fastclarans
+#' @importFrom utils modifyList
 #' @return A list with index of patients from the sample a, medoid indices, cluster assignment, and cost.
 #' \describe{
 #'   \item{clustering}{An integer vector of cluster assignments for each patient.}
@@ -110,7 +111,9 @@ fast_clara_jaccard <- function(data, k, samples = 20, samplesize = NULL,
     }
 
     # Get medoids
-    medoids_global <- cns[ part_res@medoids ]
+    # fastkmedoids returns 0-based indices (C++ convention); R indexing is 1-based.
+    # Without +1, a medoid at index 0 is silently dropped and the others are shifted.
+    medoids_global <- cns[ part_res@medoids + 1 ] #
 
     # Step 4: Extract medoid data
     medoid_data <- data[ , medoids_global , drop = FALSE]

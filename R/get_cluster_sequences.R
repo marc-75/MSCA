@@ -45,7 +45,7 @@ get_cluster_sequences <- function(dt, cl_col = "cl", id_col = "link_id", event_c
       by = cl_col
     )
 
-  cl_values <- unique(dt[[cl_col]])
+  cl_values <- sort(unique(dt[[cl_col]]))
   seq_list <- vector("list", length(cl_values))
   nseq <- integer(length(cl_values))
   names(seq_list) <- cl_values

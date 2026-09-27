@@ -2,3 +2,8 @@
 inst/doc
 /doc/
 /Meta/
+MSCA.Rcheck/
+.Rhistory
+*.tar.gz
+doc/
+Meta/

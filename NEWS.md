@@ -59,4 +59,23 @@ Plot methods for sequences
 
 Implement CLARANS as an option for the `fast_clara_jaccard` function
 
+## Version: 1.4.0
+### 2026-09-27
 
+### Changes
+
+- `fast_clara_jaccard()` now returns the function call and all argument values
+  (including defaults) in `$call`, to make analyses easier to reproduce.
+- `get_cluster_sequences()`: clusters are now returned in sorted order.
+- Vignette: typos corrected.
+
+### Bug Fixes
+
+- `fast_clara_jaccard()`: fixed medoid indexing (fastkmedoids returns 0-based
+  indices), which could drop one medoid or select the neighbouring patient.
+
+### Comments on current version
+
+MSCA was archived from CRAN on 2026-03-24 because its dependency
+`fastkmedoids` was temporarily failing CRAN checks. This version restores
+MSCA on CRAN and makes it independent of `fastkmedoids` for its default use.
